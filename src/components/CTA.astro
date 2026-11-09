@@ -1,0 +1,59 @@
+---
+import { Rocket, Mail, Sparkles, ArrowRight } from 'lucide-react';
+import GitHubIcon from './GitHubIcon.astro';
+---
+
+<section id="get-involved" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+  <div class="glass-panel rounded-3xl p-8 sm:p-14 lg:p-20 text-center relative overflow-hidden border border-emerald-500/30 bg-gradient-to-b from-gray-900/80 via-emerald-950/20 to-gray-950/90 shadow-2xl shadow-emerald-950/40">
+    <!-- Ambient glows -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-emerald-500/15 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 font-mono text-xs uppercase tracking-widest shadow-inner shadow-emerald-500/10">
+        <Sparkles class="w-3.5 h-3.5 text-emerald-400" />
+        <span>Open to All Departments • University of Sahiwal</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+        Ready to start building?
+      </h2>
+
+      <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto font-normal">
+        Join a community of students who refuse to leave university with just a piece of paper. Learn to code, validate your venture, and launch your career.
+      </p>
+
+      <!-- Action buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <a
+          href="mailto:ashiriftikharofficial@gmail.com?subject=UOS%20Entrepreneurship%20Society%20-%20Membership%20Application"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-bold text-sm text-gray-950 bg-emerald-400 hover:bg-emerald-300 shadow-xl shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+        >
+          <Rocket class="w-4 h-4" />
+          <span>Apply for Membership</span>
+        </a>
+
+        <a
+          href="https://github.com/uos-entrepreneurship"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold text-sm text-white glass-panel hover:bg-white/10 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+        >
+          <GitHubIcon class="w-4 h-4 text-emerald-400" />
+          <span>GitHub Organization</span>
+          <ArrowRight class="w-3.5 h-3.5 text-gray-400" />
+        </a>
+      </div>
+
+      <div class="pt-8 border-t border-white/5 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400 font-mono">
+        <span class="flex items-center gap-1.5">
+          <Mail class="w-3.5 h-3.5 text-emerald-400" />
+          ashiriftikharofficial@gmail.com
+        </span>
+        <span>•</span>
+        <span>University of Sahiwal, Punjab, Pakistan</span>
+        <span>•</span>
+        <span class="text-emerald-400">Zero Membership Fees</span>
+      </div>
+    </div>
+  </div>
+</section>

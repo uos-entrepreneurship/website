@@ -1,0 +1,151 @@
+---
+import { Users2, ArrowUpRight, Mail, Shield, Sparkles } from 'lucide-react';
+import GitHubIcon from './GitHubIcon.astro';
+---
+
+<section id="team" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/20 text-emerald-400 font-mono text-xs uppercase tracking-widest mb-4">
+      <Users2 class="w-3.5 h-3.5 text-emerald-400" />
+      <span>Leadership & Governance</span>
+    </div>
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+      Built by Students, for Students
+    </h2>
+    <p class="text-base text-gray-400 leading-relaxed">
+      A transparent, democratic student team combining technical craftsmanship with entrepreneurial ambition.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+    <!-- Lead Profile Card -->
+    <div class="lg:col-span-5 glass-panel rounded-3xl p-8 border border-emerald-500/30 flex flex-col justify-between relative overflow-hidden group">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-3xl rounded-full pointer-events-none" />
+
+      <div>
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-3">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-700 p-0.5 shadow-xl shadow-emerald-500/20">
+              <div class="w-full h-full bg-gray-950 rounded-[14px] flex items-center justify-center font-mono text-xl font-bold text-emerald-400">
+                AI
+              </div>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white">Ashar Iftikhar</h3>
+              <p class="text-xs font-mono text-emerald-400">Founder & Society Lead</p>
+            </div>
+          </div>
+
+          <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-950 border border-emerald-500/30 text-emerald-300">
+            Lead Organizer
+          </span>
+        </div>
+
+        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-6">
+          Full-Stack Web Developer & AI Systems Architect. Founder of Ashflow. Initiating the UOS Entrepreneurship Society and spearheading the university's first GitHub student developer hub to bridge academic studies with global industry practice.
+        </p>
+
+        <div class="space-y-2 mb-8 text-xs text-gray-400 font-mono">
+          <div class="flex items-center gap-2">
+            <Shield class="w-3.5 h-3.5 text-emerald-400" />
+            <span>Campus Expert Candidate • University of Sahiwal</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Sparkles class="w-3.5 h-3.5 text-cyan-400" />
+            <span>Next.js • TypeScript • Cloud Agents • Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+        <a
+          href="https://github.com/ashariftikhar"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-2 rounded-xl bg-gray-900 border border-white/5 text-gray-400 hover:text-white hover:border-emerald-500/40 transition-colors"
+          aria-label="GitHub Profile"
+        >
+          <GitHubIcon class="w-4 h-4" />
+        </a>
+        <a
+          href="mailto:ashiriftikharofficial@gmail.com"
+          class="p-2 rounded-xl bg-gray-900 border border-white/5 text-gray-400 hover:text-white hover:border-emerald-500/40 transition-colors"
+          aria-label="Direct Email"
+        >
+          <Mail class="w-4 h-4" />
+        </a>
+        <span class="text-[11px] font-mono text-gray-500 ml-auto">
+          ashiriftikharofficial@gmail.com
+        </span>
+      </div>
+    </div>
+
+    <!-- Core Team Recruitment & Roles Grid -->
+    <div class="lg:col-span-7 flex flex-col justify-between glass-panel rounded-3xl p-8 border border-white/5">
+      <div>
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold text-white">Join the Core Organizing Team</h3>
+          <span class="text-[10px] font-mono px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400">
+            Open Applications
+          </span>
+        </div>
+
+        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-6">
+          We are actively recruiting passionate student leaders from every discipline to co-found and steer society initiatives. Selected leads gain direct leadership credentials, event management experience, and priority access to society resources.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div class="p-4 rounded-2xl bg-gray-950/60 border border-white/5">
+            <span class="text-[11px] font-mono text-emerald-400 font-semibold block mb-1">
+              Technical Director
+            </span>
+            <p class="text-xs text-gray-400">
+              Co-lead code repositories, organize workshops, and mentor students on Git & web engineering.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-gray-950/60 border border-white/5">
+            <span class="text-[11px] font-mono text-cyan-400 font-semibold block mb-1">
+              Incubation & Venture Lead
+            </span>
+            <p class="text-xs text-gray-400">
+              Coordinate student startup teams, organize pitch nights, and guide business validation.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-gray-950/60 border border-white/5">
+            <span class="text-[11px] font-mono text-teal-400 font-semibold block mb-1">
+              Media & Creative Lead
+            </span>
+            <p class="text-xs text-gray-400">
+              Direct social storytelling, workshop posters, video teasers, and brand aesthetics.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-gray-950/60 border border-white/5">
+            <span class="text-[11px] font-mono text-amber-400 font-semibold block mb-1">
+              Department Ambassadors
+            </span>
+            <p class="text-xs text-gray-400">
+              Act as the official society liaison for BBA, English, Mathematics, and other departments.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span class="text-xs text-gray-400">
+          No prior society leadership required. Passion & consistency matter most.
+        </span>
+
+        <a
+          href="#get-involved"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-semibold text-gray-950 bg-white hover:bg-gray-100 transition-colors shadow-lg"
+        >
+          <span>Apply for Core Team</span>
+          <ArrowUpRight class="w-3.5 h-3.5" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

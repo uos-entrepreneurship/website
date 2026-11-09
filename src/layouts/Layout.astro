@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "UOS Entrepreneurship Society | University of Sahiwal",
+  description = "Entrepreneurship • Innovation • Technology — A cross-disciplinary, student-led collective empowering University of Sahiwal students to build software, master founder skills, and create real ventures."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#030712" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://github.com/uos-entrepreneurship" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+  </head>
+  <body class="bg-gray-950 text-gray-100 antialiased selection:bg-emerald-500/30 selection:text-white min-h-screen flex flex-col overflow-x-hidden">
+    <slot />
+
+    <!-- Lenis smooth scrolling initialization script -->
+    <script>
+      import { initSmoothScroll } from '../scripts/lenis';
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => initSmoothScroll());
+      } else {
+        initSmoothScroll();
+      }
+    </script>
+  </body>
+</html>
