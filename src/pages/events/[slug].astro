@@ -1,0 +1,202 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import UniversityFooter from '../../components/UniversityFooter.astro';
+import { events, type Event } from '../../data/events';
+import { Calendar, MapPin, Clock, ArrowLeft, ArrowRight, CheckCircle2, User, ShieldCheck } from 'lucide-react';
+
+export function getStaticPaths() {
+  return events.map((event) => ({
+    params: { slug: event.slug },
+    props: { event },
+  }));
+}
+
+interface Props {
+  event: Event;
+}
+
+const { event } = Astro.props;
+const isUpcoming = event.status === 'upcoming';
+---
+
+<Layout
+  title={`${event.title} | UOS Entrepreneurship Society`}
+  description={event.summary}
+>
+  <Navbar client:load currentPath="/events" />
+
+  <main class="flex-grow py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <!-- Back to Events button -->
+    <a
+      href="/events"
+      class="inline-flex items-center gap-2 text-xs font-mono font-semibold text-slate-500 hover:text-slate-900 mb-8 transition-colors"
+    >
+      <ArrowLeft class="w-3.5 h-3.5" />
+      <span>Back to All Events</span>
+    </a>
+
+    <!-- Event Header Card -->
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm mb-10">
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <span class="text-[11px] font-mono px-3 py-1 rounded-full bg-blue-50 text-blue-900 font-bold border border-blue-200">
+          {event.category}
+        </span>
+        <span class={`text-[11px] font-mono px-3 py-1 rounded-full font-semibold ${
+          isUpcoming
+            ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+            : 'bg-slate-100 text-slate-700 border border-slate-200'
+        }`}>
+          {isUpcoming ? 'Registration Open' : 'Completed Event'}
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+        {event.title}
+      </h1>
+
+      <p class="text-base text-slate-600 leading-relaxed mb-8">
+        {event.summary}
+      </p>
+
+      {/* Logistics Grid */}
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-200/80 mb-8 text-xs font-mono text-slate-700">
+        <div>
+          <span class="text-slate-400 block mb-1">DATE & TIME</span>
+          <div class="flex items-center gap-1.5 font-bold text-slate-900">
+            <Calendar class="w-3.5 h-3.5 text-amber-500" />
+            <span>{event.date}</span>
+          </div>
+          <span class="text-[11px] text-slate-500 block mt-0.5">{event.time}</span>
+        </div>
+
+        <div>
+          <span class="text-slate-400 block mb-1">CAMPUS VENUE</span>
+          <div class="flex items-center gap-1.5 font-bold text-slate-900">
+            <MapPin class="w-3.5 h-3.5 text-slate-400" />
+            <span>{event.venue}</span>
+          </div>
+          <span class="text-[11px] text-slate-500 block mt-0.5">University of Sahiwal</span>
+        </div>
+
+        <div>
+          <span class="text-slate-400 block mb-1">SESSION LEAD</span>
+          <div class="flex items-center gap-1.5 font-bold text-slate-900">
+            <User class="w-3.5 h-3.5 text-blue-900" />
+            <span>{event.speaker.name}</span>
+          </div>
+          <span class="text-[11px] text-slate-500 block mt-0.5">{event.speaker.role}</span>
+        </div>
+      </div>
+
+      {isUpcoming ? (
+        <div className="flex flex-col sm:flex-row items-center gap-3">
+          <a
+            href="/join"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-xs text-white bg-slate-900 hover:bg-blue-950 transition-colors shadow-sm"
+          >
+            <span>Register for Free (1-Click)</span>
+            <ArrowRight class="w-4 h-4 text-amber-400" />
+          </a>
+          <span class="text-xs text-slate-500 font-mono">
+            Zero admission fee • Seats reserved on first-come basis
+          </span>
+        </div>
+      ) : (
+        <div class="p-3.5 rounded-xl bg-slate-100 text-xs font-mono text-slate-600">
+          This session concluded successfully. Read the outcomes and recap below.
+        </div>
+      )}
+    </div>
+
+    <!-- Event Detailed Overview -->
+    <section class="space-y-10">
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+        <h2 class="text-xl font-bold text-slate-900 mb-4 pb-3 border-b border-slate-100">
+          Session Overview
+        </h2>
+        <p class="text-sm text-slate-700 leading-relaxed">
+          {event.description}
+        </p>
+
+        {event.prerequisites && (
+          <div class="mt-6 pt-6 border-t border-slate-100">
+            <h3 class="text-xs font-mono font-bold uppercase text-slate-500 tracking-wider mb-3">
+              Prerequisites & Requirements:
+            </h3>
+            <ul class="space-y-2">
+              {event.prerequisites.map((req) => (
+                <li class="flex items-start gap-2 text-xs text-slate-700">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span>{req}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      <!-- Agenda Breakdown -->
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+        <h2 class="text-xl font-bold text-slate-900 mb-6 pb-3 border-b border-slate-100">
+          Detailed Session Agenda
+        </h2>
+        <div class="space-y-6">
+          {event.agenda.map((slot, idx) => (
+            <div class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-6 pb-6 border-b border-slate-100 last:border-b-0 last:pb-0">
+              <span class="text-xs font-mono font-bold text-blue-900 bg-blue-50 px-3 py-1 rounded-lg w-fit shrink-0">
+                {slot.time}
+              </span>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900 mb-1">
+                  {slot.title}
+                </h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  {slot.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Past Event Recap if available -->
+      {event.recap && (
+        <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-md">
+          <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider block mb-2">
+            Session Archive & Recap
+          </span>
+          <h2 class="text-2xl font-bold text-white mb-4">
+            Key Outcomes from the Session
+          </h2>
+          <ul class="space-y-2.5 mb-6">
+            {event.recap.takeaways.map((takeaway) => (
+              <li class="flex items-start gap-2 text-xs text-slate-300">
+                <CheckCircle2 class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span>{takeaway}</span>
+              </li>
+            ))}
+          </ul>
+          <blockquote class="p-4 rounded-xl bg-white/5 border border-white/10 text-xs italic text-slate-300">
+            "{event.recap.quote.text}" — <strong class="text-white not-italic">{event.recap.quote.author}</strong> ({event.recap.quote.department})
+          </blockquote>
+        </div>
+      )}
+
+      <!-- Bottom Registration CTA -->
+      {isUpcoming && (
+        <div class="text-center pt-8">
+          <a
+            href="/join"
+            class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-white bg-slate-900 hover:bg-blue-950 shadow-md transition-all"
+          >
+            <span>Reserve Your Seat for this Event</span>
+            <ArrowRight class="w-4 h-4 text-amber-400" />
+          </a>
+        </div>
+      )}
+    </section>
+  </main>
+
+  <UniversityFooter />
+</Layout>

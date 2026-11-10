@@ -1,0 +1,199 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import UniversityFooter from '../components/UniversityFooter.astro';
+import { executiveTeam, facultyAdvisors } from '../data/team';
+import { Mail, GraduationCap, ShieldCheck, ArrowUpRight, Building2, MapPin } from 'lucide-react';
+import GitHubIcon from '../components/GitHubIcon.astro';
+---
+
+<Layout
+  title="About & Governance | UOS Entrepreneurship Society"
+  description="Mission, university affiliation under the Directorate of Student Affairs, and the core student team at University of Sahiwal."
+>
+  <Navbar client:load currentPath="/about" />
+
+  <main class="flex-grow py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="max-w-3xl mb-14">
+      <span class="text-xs font-mono font-bold tracking-widest uppercase text-blue-900 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
+        About the Chapter
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mt-3 mb-4">
+        Legitimacy & Governance
+      </h1>
+      <p class="text-base text-slate-600 leading-relaxed">
+        Officially chartered to turn student intellect into scalable ventures, industry software skills, and economic mobility.
+      </p>
+    </div>
+
+    <!-- 1. The 2-Sentence Stated Mission -->
+    <div class="bg-white border-l-4 border-amber-500 rounded-2xl p-7 sm:p-9 shadow-sm mb-16 border border-slate-200">
+      <span class="text-xs font-mono text-slate-400 uppercase tracking-widest font-bold block mb-2">
+        Official Society Mission
+      </span>
+      <blockquote class="text-lg sm:text-xl text-slate-900 font-semibold leading-relaxed mb-4">
+        "To empower students across disciplines to develop entrepreneurial mindsets, explore emerging technologies, transform ideas into meaningful ventures, and build the skills and connections needed to create real-world impact."
+      </blockquote>
+      <p class="text-xs text-slate-500 font-mono">
+        Chartered by student innovators across the Faculty of Computing & IT and Management Sciences.
+      </p>
+    </div>
+
+    <!-- 2. University Affiliation Statement -->
+    <div class="bg-slate-900 text-white rounded-3xl p-8 sm:p-10 mb-16 shadow-md border border-slate-800">
+      <div class="flex items-center gap-2 mb-4">
+        <GraduationCap class="w-5 h-5 text-amber-400" />
+        <span class="text-xs font-mono text-amber-400 uppercase tracking-widest font-bold">
+          Institutional Affiliation
+        </span>
+      </div>
+
+      <h2 class="text-2xl font-bold text-white mb-3">
+        Under the Directorate of Student Affairs, University of Sahiwal
+      </h2>
+
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 max-w-3xl">
+        The UOS Entrepreneurship Society is an officially recognized student organization operating on campus under the auspices of the Directorate of Student Affairs (DSA). All workshops, hackathons, and guest lectures adhere to university academic regulations and utilize designated campus computing labs and auditoriums.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-white/10 text-xs font-mono text-slate-300">
+        <div>
+          <span class="text-slate-400 block mb-1">Campus Location:</span>
+          <span class="font-bold text-white">Farid Town Road, Sahiwal</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-1">Affiliated Faculties:</span>
+          <span class="font-bold text-white">Computing & IT • Management</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-1">Status:</span>
+          <span class="font-bold text-emerald-400">Active Student Chapter</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Real Core Leadership Team -->
+    <section class="mb-16">
+      <div class="mb-8">
+        <span class="text-xs font-mono font-bold tracking-widest uppercase text-blue-900 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
+          Core Team
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-2.5">
+          Student Executive Council
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+          Real names, real faces, real accountability.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {executiveTeam.map((member) => (
+          <div class="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-4 mb-4">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-12 h-12 rounded-2xl bg-slate-900 border border-amber-500/80 flex items-center justify-center font-mono font-bold text-amber-400 text-base shadow-sm">
+                    {member.avatarText}
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-base text-slate-900">
+                      {member.name}
+                    </h3>
+                    <span class="text-xs font-mono text-blue-950 font-bold block">
+                      {member.role}
+                    </span>
+                    <span class="text-[11px] text-slate-500 block">
+                      {member.department}
+                    </span>
+                  </div>
+                </div>
+
+                {member.badge && (
+                  <span class={`text-[10px] font-mono px-2 py-0.5 rounded font-bold uppercase ${
+                    member.badge === 'Founding Lead'
+                      ? 'bg-amber-100 text-amber-900 border border-amber-200'
+                      : 'bg-slate-100 text-slate-700 border border-slate-200'
+                  }`}>
+                    {member.badge}
+                  </span>
+                )}
+              </div>
+
+              <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                {member.bio}
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
+              <div class="flex items-center gap-3">
+                {member.github && (
+                  <a
+                    href={member.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+                    title="GitHub"
+                  >
+                    <GitHubIcon class="w-3.5 h-3.5" />
+                  </a>
+                )}
+                {member.linkedin && (
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+                    title="LinkedIn"
+                  >
+                    <span class="text-[10px] font-bold">in</span>
+                  </a>
+                )}
+              </div>
+
+              <a
+                href={`mailto:${member.email}`}
+                class="text-blue-900 hover:underline flex items-center gap-1"
+              >
+                <Mail class="w-3 h-3" />
+                <span>Contact</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 4. Direct Contact Channels -->
+    <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-10 text-center">
+      <h3 class="text-xl font-bold text-slate-900 mb-2">
+        Official Society Touchpoints
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-600 mb-6 max-w-lg mx-auto">
+        Have questions about faculty partnerships, sponsoring an event, or requesting a custom workshop for your department? Reach out directly.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
+        <a
+          href="mailto:ashiriftikharofficial@gmail.com"
+          class="px-5 py-2.5 rounded-xl bg-white border border-slate-300 font-bold text-slate-900 hover:border-slate-400 transition-colors shadow-sm flex items-center gap-1.5"
+        >
+          <Mail class="w-3.5 h-3.5 text-blue-900" />
+          <span>ashiriftikharofficial@gmail.com</span>
+        </a>
+
+        <a
+          href="https://github.com/uos-entrepreneurship"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-5 py-2.5 rounded-xl bg-slate-900 text-white font-bold hover:bg-blue-950 transition-colors shadow-sm flex items-center gap-1.5"
+        >
+          <GitHubIcon class="w-3.5 h-3.5 text-amber-400" />
+          <span>github.com/uos-entrepreneurship</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <UniversityFooter />
+</Layout>

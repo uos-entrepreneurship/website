@@ -1,47 +1,176 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import AboutMandate from '../components/AboutMandate.astro';
-import Pillars from '../components/Pillars';
-import FlagshipPrograms from '../components/FlagshipPrograms.astro';
-import CalendarSchedule from '../components/CalendarSchedule.astro';
-import Governance from '../components/Governance.astro';
-import OpenSyllabi from '../components/OpenSyllabi.astro';
-import InstitutionalCTA from '../components/InstitutionalCTA.astro';
 import UniversityFooter from '../components/UniversityFooter.astro';
+import { events } from '../data/events';
+import { ArrowRight, Calendar, MapPin, Users, Rocket, Terminal, Trophy, Mic2 } from 'lucide-react';
+
+// Get next upcoming event
+const nextEvent = events.find((e) => e.status === 'upcoming') || events[0];
+
+const whatWeDo = [
+  {
+    icon: Terminal,
+    title: 'Skill Sprints',
+    description: 'Hands-on lab workshops on Git, full-stack web, and AI automation tools in campus computing labs.',
+  },
+  {
+    icon: Rocket,
+    title: 'Pitch Nights',
+    description: 'Validate raw business ideas, get unfiltered feedback from mentors, and build lean pitch decks.',
+  },
+  {
+    icon: Mic2,
+    title: 'Founder Talks',
+    description: 'Direct playbooks on remote freelancing, international client acquisition, and tech careers.',
+  },
+  {
+    icon: Trophy,
+    title: 'Intra-Campus Hackathons',
+    description: 'Annual 48-hour build marathons pairing CS developers with BBA strategists to ship live MVPs.',
+  },
+];
 ---
 
-<Layout>
-  <!-- Institutional Sticky Navbar -->
-  <Navbar client:load />
+<Layout
+  title="UOS Entrepreneurship Society | Build Your First Venture"
+  description="A student-led community at the University of Sahiwal turning ideas into real projects."
+>
+  <Navbar client:load currentPath="/" />
 
   <main class="flex-grow">
-    <!-- Academic Hero Section -->
-    <Hero client:load />
+    <!-- Hero Section (The 10-Second Test) -->
+    <section class="pt-16 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
+      {/* Institutional Micro Badge */}
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-600 inline-block animate-pulse"></span>
+        <span>University of Sahiwal • Student Innovation Chapter</span>
+      </div>
 
-    <!-- Mandate & Faculty Linkage -->
-    <AboutMandate />
+      {/* Outcome Headline */}
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-black text-slate-900 tracking-tight leading-[1.08] mb-6 max-w-4xl mx-auto">
+        Build Your First Venture at UOS.
+      </h1>
 
-    <!-- Five Strategic Pillars -->
-    <Pillars client:visible />
+      {/* Single Subtitle Line */}
+      <p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto mb-9">
+        A student-led community at the University of Sahiwal turning ideas into real software, projects, and ventures.
+      </p>
 
-    <!-- Flagship Cohorts & Hands-on Lab Bootcamps -->
-    <FlagshipPrograms />
+      {/* Two Action Buttons */}
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-14">
+        <a
+          href="/join"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-white bg-slate-900 hover:bg-blue-950 shadow-md hover:shadow-lg transition-all"
+        >
+          <span>Join the Society</span>
+          <ArrowRight class="w-4 h-4 text-amber-400" />
+        </a>
 
-    <!-- Academic Semester Calendar -->
-    <CalendarSchedule />
+        <a
+          href="/events"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-semibold text-sm text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 shadow-sm transition-all"
+        >
+          <Calendar class="w-4 h-4 text-slate-500" />
+          <span>See Upcoming Events</span>
+        </a>
+      </div>
 
-    <!-- Governance: Faculty Advisory & Executive Cabinet -->
-    <Governance />
+      {/* Honest Social Proof Strip */}
+      <div class="inline-flex flex-wrap items-center justify-center gap-y-2 gap-x-6 px-6 py-3 rounded-2xl bg-white border border-slate-200 shadow-sm text-xs font-mono text-slate-600 mb-16">
+        <span class="flex items-center gap-1.5 font-bold text-slate-900">
+          <Users class="w-3.5 h-3.5 text-blue-900" />
+          35+ Members
+        </span>
+        <span class="text-slate-300 hidden sm:inline">•</span>
+        <span class="flex items-center gap-1.5 font-bold text-slate-900">
+          <Calendar class="w-3.5 h-3.5 text-amber-600" />
+          2 Events Hosted
+        </span>
+        <span class="text-slate-300 hidden sm:inline">•</span>
+        <span class="flex items-center gap-1.5 font-bold text-slate-900">
+          <Rocket class="w-3.5 h-3.5 text-emerald-600" />
+          3 Active Projects
+        </span>
+        <span class="text-slate-300 hidden sm:inline">•</span>
+        <span class="text-emerald-700 font-semibold">100% Student-Led</span>
+      </div>
 
-    <!-- Public Documentation & Open GitHub Blueprints -->
-    <OpenSyllabi />
+      {/* Next Event Card Spotlight */}
+      <div class="max-w-2xl mx-auto bg-gradient-to-br from-slate-900 to-blue-950 text-white p-7 sm:p-8 rounded-3xl text-left shadow-xl border border-slate-800 relative overflow-hidden mb-20">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-400 px-2.5 py-0.5 rounded bg-amber-400/10 border border-amber-400/20">
+            Next Upcoming Session
+          </span>
+          <span class="text-xs font-mono text-slate-400">
+            {nextEvent.category}
+          </span>
+        </div>
 
-    <!-- Official Student Membership Admissions -->
-    <InstitutionalCTA />
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">
+          {nextEvent.title}
+        </h3>
+
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+          {nextEvent.summary}
+        </p>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-5 border-t border-white/10">
+          <div class="text-xs font-mono text-slate-300 space-y-1">
+            <div class="flex items-center gap-1.5 font-bold text-white">
+              <Calendar class="w-3.5 h-3.5 text-amber-400" />
+              <span>{nextEvent.date}</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-slate-400">
+              <MapPin class="w-3.5 h-3.5 text-slate-400" />
+              <span>{nextEvent.venue}</span>
+            </div>
+          </div>
+
+          <a
+            href={`/events/${nextEvent.slug}`}
+            class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors shadow-sm"
+          >
+            <span>Register for Free</span>
+            <ArrowRight class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+
+      {/* What We Do Section (4 Action Cards) */}
+      <div class="text-left pt-6">
+        <div class="text-center mb-10">
+          <span class="text-xs font-mono font-bold tracking-widest uppercase text-blue-900 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
+            What We Do
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-2.5">
+            Four Pillars of Execution
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {whatWeDo.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:border-slate-300 transition-all flex flex-col justify-between">
+                <div>
+                  <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 mb-4">
+                    <Icon class="w-5 h-5" />
+                  </div>
+                  <h3 class="font-bold text-base text-slate-900 mb-2">
+                    {item.title}
+                  </h3>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- University Footer -->
   <UniversityFooter />
 </Layout>

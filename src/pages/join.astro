@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import UniversityFooter from '../components/UniversityFooter.astro';
+import JoinForm from '../components/JoinForm';
+import { ShieldCheck, Users, Sparkles, CheckCircle2 } from 'lucide-react';
+---
+
+<Layout
+  title="Join the Society | UOS Entrepreneurship Society"
+  description="Apply for active membership in the UOS Entrepreneurship Society. Instant WhatsApp community access."
+>
+  <Navbar client:load currentPath="/join" />
+
+  <main class="flex-grow py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-900 font-mono text-xs font-semibold uppercase tracking-wider mb-4">
+        <Sparkles class="w-3.5 h-3.5" />
+        <span>Spring 2027 Admissions Open</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mb-4">
+        Join the Builders at UOS.
+      </h1>
+
+      <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+        Fill out this 60-second form to join our active student roster. Once submitted, you will immediately receive the invite link to our private WhatsApp community.
+      </p>
+    </div>
+
+    <!-- Multi-Step Interactive Form Island -->
+    <JoinForm client:load />
+
+    <!-- Guarantees Bar -->
+    <div class="mt-12 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-xs font-mono text-slate-500">
+      <div class="flex items-center justify-center gap-1.5">
+        <CheckCircle2 class="w-4 h-4 text-emerald-600" />
+        <span>Zero Membership Dues</span>
+      </div>
+      <div class="flex items-center justify-center gap-1.5">
+        <CheckCircle2 class="w-4 h-4 text-emerald-600" />
+        <span>All University Faculties Welcome</span>
+      </div>
+      <div class="flex items-center justify-center gap-1.5">
+        <CheckCircle2 class="w-4 h-4 text-emerald-600" />
+        <span>Instant WhatsApp Invite Access</span>
+      </div>
+    </div>
+  </main>
+
+  <UniversityFooter />
+</Layout>

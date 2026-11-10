@@ -1,0 +1,168 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import UniversityFooter from '../../components/UniversityFooter.astro';
+import { events } from '../../data/events';
+import { Calendar, MapPin, ArrowRight, CheckCircle2, Quote, ExternalLink } from 'lucide-react';
+
+const upcomingEvents = events.filter((e) => e.status === 'upcoming');
+const pastEvents = events.filter((e) => e.status === 'past');
+---
+
+<Layout
+  title="Events & Masterclasses | UOS Entrepreneurship Society"
+  description="Upcoming lab bootcamps, founder masterclasses, and past event archives at the University of Sahiwal."
+>
+  <Navbar client:load currentPath="/events" />
+
+  <main class="flex-grow py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="max-w-3xl mb-14">
+      <span class="text-xs font-mono font-bold tracking-widest uppercase text-blue-900 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
+        Society Calendar
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mt-3 mb-4">
+        Events & Workshops
+      </h1>
+      <p class="text-base text-slate-600 leading-relaxed">
+        Practical, in-person bootcamps in campus computing labs, founder pitch nights, and annual hackathons. Open to all departments.
+      </p>
+    </div>
+
+    <!-- 1. UPCOMING EVENTS SECTION -->
+    <section class="mb-20">
+      <div class="flex items-center gap-2 mb-6 pb-3 border-b border-slate-200">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
+        <h2 class="text-lg font-bold text-slate-900">Upcoming Events ({upcomingEvents.length})</h2>
+      </div>
+
+      <div class="space-y-6">
+        {upcomingEvents.map((ev) => (
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:border-slate-300 transition-all">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+              <div class="space-y-2 max-w-2xl">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <span class="text-[11px] font-mono px-2.5 py-0.5 rounded bg-blue-50 text-blue-900 font-bold border border-blue-200">
+                    {ev.category}
+                  </span>
+                  <span class="text-xs font-mono text-slate-500">
+                    Lead: {ev.speaker.name} ({ev.speaker.role})
+                  </span>
+                </div>
+
+                <h3 class="text-xl sm:text-2xl font-bold text-slate-900">
+                  <a href={`/events/${ev.slug}`} class="hover:text-blue-900 transition-colors">
+                    {ev.title}
+                  </a>
+                </h3>
+
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {ev.summary}
+                </p>
+
+                <div class="flex flex-wrap items-center gap-y-1 gap-x-4 pt-2 text-xs font-mono text-slate-500">
+                  <span class="flex items-center gap-1 font-bold text-slate-900">
+                    <Calendar class="w-3.5 h-3.5 text-amber-500" />
+                    {ev.date} • {ev.time}
+                  </span>
+                  <span>•</span>
+                  <span class="flex items-center gap-1 text-slate-600">
+                    <MapPin class="w-3.5 h-3.5 text-slate-400" />
+                    {ev.venue}
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row lg:flex-col gap-2.5 shrink-0">
+                <a
+                  href={`/events/${ev.slug}`}
+                  class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-xs text-white bg-slate-900 hover:bg-blue-950 transition-colors shadow-sm text-center"
+                >
+                  <span>Register Free</span>
+                  <ArrowRight class="w-3.5 h-3.5" />
+                </a>
+
+                <a
+                  href={`/events/${ev.slug}`}
+                  class="inline-flex items-center justify-center gap-1 px-4 py-2.5 rounded-xl font-semibold text-xs text-slate-600 hover:bg-slate-100 transition-colors text-center font-mono"
+                >
+                  <span>View Details & Agenda</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 2. PAST EVENTS & RECAP ARCHIVE -->
+    <section>
+      <div class="flex items-center gap-2 mb-6 pb-3 border-b border-slate-200">
+        <h2 class="text-lg font-bold text-slate-900">Past Events & Recaps ({pastEvents.length})</h2>
+      </div>
+
+      <div class="space-y-6">
+        {pastEvents.map((ev) => (
+          <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8">
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+              <div>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-200 text-slate-700 font-semibold uppercase">
+                  Completed Event
+                </span>
+                <h3 class="text-xl font-bold text-slate-900 mt-2">
+                  <a href={`/events/${ev.slug}`} class="hover:underline">
+                    {ev.title}
+                  </a>
+                </h3>
+                <span class="text-xs font-mono text-slate-500 block mt-1">
+                  Held on {ev.date} at {ev.venue} • {ev.recap?.attendees || 0} Students Attended
+                </span>
+              </div>
+
+              <a
+                href={`/events/${ev.slug}`}
+                class="text-xs font-mono font-semibold text-blue-900 hover:underline shrink-0"
+              >
+                View Full Archive →
+              </a>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+              {ev.description}
+            </p>
+
+            {ev.recap && (
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-4 border-t border-slate-200/80">
+                <div class="bg-white p-4 rounded-xl border border-slate-200/60">
+                  <span class="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold block mb-2">
+                    Key Outcomes & Takeaways:
+                  </span>
+                  <ul class="space-y-1.5">
+                    {ev.recap.takeaways.map((t) => (
+                      <li class="flex items-start gap-2 text-xs text-slate-700">
+                        <CheckCircle2 class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                        <span>{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl border border-slate-200/60 flex flex-col justify-between">
+                  <div class="flex items-start gap-2 text-xs italic text-slate-700 leading-relaxed">
+                    <Quote class="w-4 h-4 text-blue-900 shrink-0 opacity-40 mt-0.5" />
+                    <span>"{ev.recap.quote.text}"</span>
+                  </div>
+                  <span class="text-[11px] font-mono text-slate-500 block mt-3 pt-2 border-t border-slate-100">
+                    — {ev.recap.quote.author} ({ev.recap.quote.department})
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <UniversityFooter />
+</Layout>
