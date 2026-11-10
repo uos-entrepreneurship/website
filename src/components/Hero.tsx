@@ -1,182 +1,114 @@
-import React, { useEffect, useRef } from 'react';
-import { ArrowRight, Rocket, Sparkles, Terminal, ChevronDown } from 'lucide-react';
-import gsap from 'gsap';
+import React from 'react';
+import { ArrowRight, BookOpen, Calendar, ChevronRight, GraduationCap } from 'lucide-react';
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const badgeRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-
-      tl.from(badgeRef.current, {
-        y: -20,
-        opacity: 0,
-        duration: 0.8,
-        delay: 0.1,
-      })
-        .from(
-          headlineRef.current,
-          {
-            y: 40,
-            opacity: 0,
-            duration: 1.1,
-          },
-          '-=0.5'
-        )
-        .from(
-          subtitleRef.current,
-          {
-            y: 25,
-            opacity: 0,
-            duration: 0.9,
-          },
-          '-=0.7'
-        )
-        .from(
-          ctaRef.current,
-          {
-            y: 20,
-            opacity: 0,
-            duration: 0.8,
-          },
-          '-=0.6'
-        );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-[92vh] flex flex-col items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-grid-pattern"
-    >
-      {/* Background radial spotlights */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] bg-gradient-to-tr from-emerald-500/15 via-teal-500/10 to-transparent blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/3 left-1/4 w-[350px] h-[350px] bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
-
-      {/* Main Content Container */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
-        {/* Top Tagline Badge */}
-        <div ref={badgeRef} className="inline-block mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/25 backdrop-blur-md shadow-inner shadow-emerald-500/10">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            <span className="text-[11px] font-mono tracking-widest uppercase text-emerald-300 font-semibold">
-              University of Sahiwal • Student Innovation Hub
-            </span>
+    <section className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-slate-50 to-slate-100/60 border-b border-slate-200 bg-grid-subtle overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+        {/* Institutional Charter Badge */}
+        <div className="flex flex-wrap items-center gap-2 mb-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs font-mono font-medium shadow-sm">
+            <GraduationCap className="w-3.5 h-3.5 text-amber-400" />
+            <span>University of Sahiwal</span>
           </div>
+          <span className="text-xs font-mono text-slate-500 uppercase tracking-wider">
+            Student-Led Entrepreneurship & Innovation Chapter
+          </span>
         </div>
 
         {/* Display Headline */}
-        <h1
-          ref={headlineRef}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.08] mb-6"
-        >
-          Think. Build.{' '}
-          <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
-            Launch.
-          </span>
-        </h1>
+        <div className="max-w-4xl mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-[1.12]">
+            Transforming academic theory into{' '}
+            <span className="font-serif italic font-normal text-blue-900 underline decoration-amber-400 decoration-4 underline-offset-8">
+              real-world ventures
+            </span>{' '}
+            and software.
+          </h1>
+        </div>
 
         {/* Descriptor line */}
-        <div className="mb-4">
-          <span className="text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-emerald-400 font-medium">
-            Entrepreneurship • Innovation • Technology
+        <div className="mb-6 flex items-center gap-3">
+          <span className="h-0.5 w-8 bg-amber-500 inline-block" />
+          <span className="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold text-slate-700">
+            ENTREPRENEURSHIP • INNOVATION • TECHNOLOGY
           </span>
         </div>
 
-        {/* Subtitle / Value proposition */}
-        <p
-          ref={subtitleRef}
-          className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed font-normal mb-9"
-        >
-          A cross-disciplinary, student-led collective empowering every department
-          at the <span className="text-white font-medium">University of Sahiwal</span> to
-          build modern software, master founder skills, and create real ventures.
+        {/* Subtitle */}
+        <p className="max-w-3xl text-base sm:text-lg text-slate-600 leading-relaxed mb-9">
+          The official cross-disciplinary society uniting students from <strong className="text-slate-900 font-semibold">Computer Science</strong>, <strong className="text-slate-900 font-semibold">Business Administration (BBA)</strong>, <strong className="text-slate-900 font-semibold">Economics</strong>, and across all departments at the University of Sahiwal. We provide structured bootcamps, founder mentorship, and open-source collaboration to build scalable ventures.
         </p>
 
-        {/* CTA Buttons */}
-        <div
-          ref={ctaRef}
-          className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
-        >
+        {/* Action CTAs */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-14">
           <a
-            href="#get-involved"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-gray-950 bg-emerald-400 hover:bg-emerald-300 shadow-xl shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+            href="#membership"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm text-white bg-slate-900 hover:bg-blue-950 shadow-md hover:shadow-lg transition-all"
           >
-            <span>Get Involved</span>
-            <Rocket className="w-4 h-4" />
+            <span>Apply for Spring 2027 Cohort</span>
+            <ArrowRight className="w-4 h-4 text-amber-400" />
           </a>
 
           <a
-            href="https://github.com/uos-entrepreneurship"
+            href="#schedule"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 shadow-sm transition-all"
+          >
+            <Calendar className="w-4 h-4 text-slate-500" />
+            <span>View Semester Schedule</span>
+          </a>
+
+          <a
+            href="https://github.com/uos-entrepreneurship/.github/blob/main/WORKSHOP_SERIES_GIT_ZERO_TO_HERO.md"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-medium text-sm text-gray-200 glass-panel hover:bg-white/10 hover:text-white transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-medium text-xs font-mono text-slate-600 hover:text-slate-900 transition-colors"
           >
-            <Terminal className="w-4 h-4 text-emerald-400" />
-            <span>Explore Organization Hub</span>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400" />
+            <BookOpen className="w-4 h-4 text-emerald-600" />
+            <span>Workshop Syllabus</span>
+            <ChevronRight className="w-3.5 h-3.5" />
           </a>
         </div>
 
-        {/* Micro Credibility Bar */}
-        <div className="mt-14 pt-8 border-t border-white/5 w-full max-w-3xl grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-          <div className="flex flex-col">
-            <span className="font-mono text-xl sm:text-2xl font-bold text-white tracking-tight">
-              5 Pillars
-            </span>
-            <span className="text-[11px] text-gray-400 uppercase tracking-wider font-mono">
-              Core Focus Areas
-            </span>
+        {/* Institutional Pillars Summary Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-8 border-t border-slate-200">
+          <div className="institution-card p-5 rounded-2xl">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-900 font-bold text-xs">
+                01
+              </div>
+              <h3 className="font-bold text-sm text-slate-900">Cross-Faculty Collaboration</h3>
+            </div>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Pairing technical developers from CS with strategists from BBA & Commerce to form balanced, execution-capable venture teams.
+            </p>
           </div>
 
-          <div className="flex flex-col">
-            <span className="font-mono text-xl sm:text-2xl font-bold text-emerald-400 tracking-tight">
-              100%
-            </span>
-            <span className="text-[11px] text-gray-400 uppercase tracking-wider font-mono">
-              Student-Led
-            </span>
+          <div className="institution-card p-5 rounded-2xl">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 font-bold text-xs">
+                02
+              </div>
+              <h3 className="font-bold text-sm text-slate-900">Applied Tech & Open Source</h3>
+            </div>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Mastering industry-grade tools—Git, GitHub Actions, Full-Stack engineering, and automating business workflows with modern AI.
+            </p>
           </div>
 
-          <div className="flex flex-col">
-            <span className="font-mono text-xl sm:text-2xl font-bold text-white tracking-tight">
-              All Depts
-            </span>
-            <span className="text-[11px] text-gray-400 uppercase tracking-wider font-mono">
-              CS • BBA • Arts • Sci
-            </span>
-          </div>
-
-          <div className="flex flex-col">
-            <span className="font-mono text-xl sm:text-2xl font-bold text-cyan-400 tracking-tight">
-              Open Source
-            </span>
-            <span className="text-[11px] text-gray-400 uppercase tracking-wider font-mono">
-              GitHub Backed
-            </span>
+          <div className="institution-card p-5 rounded-2xl">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800 font-bold text-xs">
+                03
+              </div>
+              <h3 className="font-bold text-sm text-slate-900">Commercial Incubation</h3>
+            </div>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Moving past theoretical slides: customer validation, MVP launching, client acquisition, and pitch preparation for external grants.
+            </p>
           </div>
         </div>
       </div>
-
-      {/* Scroll Down Hint */}
-      <a
-        href="#marquee"
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-500 hover:text-emerald-400 transition-colors pointer-events-auto"
-        aria-label="Scroll to content"
-      >
-        <span className="text-[10px] font-mono tracking-widest uppercase">Explore</span>
-        <ChevronDown className="w-4 h-4 animate-bounce" />
-      </a>
     </section>
   );
 }

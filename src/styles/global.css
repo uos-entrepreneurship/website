@@ -1,19 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
+  
+  --color-uos-navy: #0A192F;
+  --color-uos-royal: #1E3A8A;
+  --color-uos-gold: #D97706;
+  --color-uos-emerald: #059669;
 }
 
 html {
   font-family: var(--font-sans);
-  background-color: #030712;
-  color: #F9FAFB;
-  color-scheme: dark;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  color-scheme: light;
+  scroll-behavior: auto !important;
 }
 
-code, pre, .font-mono {
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-mono {
   font-family: var(--font-mono);
 }
 
@@ -26,87 +37,56 @@ html.lenis, html.lenis body {
   scroll-behavior: auto !important;
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
 .lenis.lenis-stopped {
   overflow: hidden;
 }
 
-/* Custom selection */
+/* Selection */
 ::selection {
-  background: rgba(16, 185, 129, 0.35);
+  background: #1E3A8A;
   color: #FFFFFF;
 }
 
-/* Modern thin scrollbar */
+/* Institutional Clean Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1F2937;
+  background: #CBD5E1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #10B981;
+  background: #94A3B8;
 }
 
-/* Mesh & grid backgrounds */
-.bg-grid-pattern {
-  background-size: 40px 40px;
+/* University Pattern */
+.bg-grid-subtle {
+  background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
 }
 
-.bg-dots-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Crisp institutional card */
+.institution-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Glassmorphism */
-.glass-panel {
-  background: rgba(17, 24, 39, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.institution-card:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.08);
 }
 
-.glass-nav {
-  background: rgba(3, 7, 18, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-/* Keyframes for marquee */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes marquee-reverse {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0%); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 35s linear infinite;
-}
-
-.animate-marquee-reverse {
-  display: flex;
-  width: max-content;
-  animation: marquee-reverse 35s linear infinite;
-}
-
-.animate-marquee:hover,
-.animate-marquee-reverse:hover {
-  animation-play-state: paused;
+/* Subtle clean header blur */
+.glass-header {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #E2E8F0;
 }

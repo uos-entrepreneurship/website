@@ -1,164 +1,181 @@
-import React, { useState } from 'react';
-import { Rocket, Cpu, Lightbulb, Users, Network, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import React from 'react';
+import { Rocket, Lightbulb, Cpu, Users, Network, CheckCircle2, ChevronRight } from 'lucide-react';
 
 export default function Pillars() {
-  const [activePillar, setActivePillar] = useState<number | null>(null);
-
   const pillars = [
     {
-      id: 1,
+      id: '01',
       title: 'Entrepreneurship',
-      tagline: 'Start and grow real businesses',
+      tagline: 'Start and grow viable businesses',
       icon: Rocket,
-      color: 'emerald',
-      size: 'large', // 2 cols
-      summary:
-        'Transforming conceptual ideas into validated commercial models, pitch decks, and launched products.',
-      achievements: [
-        'Business model validation & lean startup mechanics',
-        'Customer discovery sprints & problem interviewing',
-        'Pitch deck crafting & investor presentation skills',
-        'Freelance agency operations & client acquisition',
+      accent: 'border-l-blue-700',
+      badgeBg: 'bg-blue-50 text-blue-900 border-blue-200',
+      description:
+        'Guiding student founders through idea validation, customer discovery, financial modeling, and early traction before graduation.',
+      outcomes: [
+        'Lean canvas & business model validation',
+        'Customer discovery & problem interview sprints',
+        'Pitch deck preparation for grants and incubators',
+        'Digital agency workflows & freelance contract acquisition',
       ],
-      badge: 'Core Engine',
     },
     {
-      id: 2,
+      id: '02',
       title: 'Innovation',
       tagline: 'Solve problems and develop ideas',
       icon: Lightbulb,
-      color: 'cyan',
-      size: 'normal',
-      summary:
-        'Applying design thinking and rapid prototyping to solve real friction on campus and in regional industries.',
-      achievements: [
-        'Design thinking & user research',
-        'Rapid MVP prototyping cycles',
-        'Zero-to-one problem solving',
+      accent: 'border-l-amber-600',
+      badgeBg: 'bg-amber-50 text-amber-900 border-amber-200',
+      description:
+        'Applying design thinking and rapid prototyping to regional friction, campus operations, and local business challenges.',
+      outcomes: [
+        'Human-centered design thinking methodology',
+        'Rapid MVP prototyping cycles (Zero-to-One)',
+        'Iterative testing and user feedback loops',
+        'Case study competitions and solution roadmaps',
       ],
-      badge: 'Creative Lab',
     },
     {
-      id: 3,
+      id: '03',
       title: 'Technology',
       tagline: 'Explore AI, software and emerging tech',
       icon: Cpu,
-      color: 'teal',
-      size: 'normal',
-      summary:
-        'Hands-on immersion into modern development: Git, full-stack web, generative AI workflows, and automation.',
-      achievements: [
-        'Git & GitHub version control from ground zero',
-        'Modern web frameworks & API architecture',
-        'AI tooling & developer productivity workflows',
+      accent: 'border-l-emerald-700',
+      badgeBg: 'bg-emerald-50 text-emerald-900 border-emerald-200',
+      description:
+        'Demystifying software development, Git version control, generative AI workflows, and modern cloud deployment for every department.',
+      outcomes: [
+        'Collaborative Git & GitHub version control from scratch',
+        'Full-stack web architecture & API integration',
+        'AI agents & automated developer productivity stacks',
+        'Manual GitHub Student Developer Pack verification clinics',
       ],
-      badge: 'Tech Core',
     },
     {
-      id: 4,
+      id: '04',
       title: 'Professional Skills',
       tagline: 'Learn communication, sales and leadership',
       icon: Users,
-      color: 'amber',
-      size: 'normal',
-      summary:
-        'Equipping members with the soft and hard leadership skills needed to command respect in the modern workforce.',
-      achievements: [
-        'High-stakes public speaking & demo delivery',
-        'Consultative selling & negotiation fundamentals',
-        'Cross-functional team leadership',
+      accent: 'border-l-purple-700',
+      badgeBg: 'bg-purple-50 text-purple-900 border-purple-200',
+      description:
+        'Equipping members with the executive communication, team leadership, and consultative sales skills essential for modern careers.',
+      outcomes: [
+        'High-stakes demo presentations & stage presence',
+        'Consultative selling & client negotiation',
+        'Cross-disciplinary team management',
+        'Personal branding & technical portfolio curation',
       ],
-      badge: 'Leadership',
     },
     {
-      id: 5,
+      id: '05',
       title: 'Opportunities',
       tagline: 'Connect with founders, mentors and companies',
       icon: Network,
-      color: 'purple',
-      size: 'large', // 2 cols
-      summary:
-        'Direct access to a curated network of founders, corporate sponsors, alumni mentors, and global programs.',
-      achievements: [
-        'Mentorship from practicing agency and SaaS founders',
-        'GitHub Campus Program & student developer pack access',
-        'Apprenticeship & internship talent matching',
-        'Intra-university and national hackathon access',
+      accent: 'border-l-slate-800',
+      badgeBg: 'bg-slate-100 text-slate-900 border-slate-300',
+      description:
+        'Establishing direct linkages between University of Sahiwal students and the national tech, freelance, and startup ecosystem.',
+      outcomes: [
+        'Direct mentorship from practicing tech & agency founders',
+        'Alumni networking & corporate apprenticeship fast-tracks',
+        'Intra-university and national hackathon sponsorships',
+        'GitHub Campus Expert community accreditation pipeline',
       ],
-      badge: 'Ecosystem',
     },
   ];
 
   return (
-    <section id="pillars" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* Section Header */}
+    <section id="pillars" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200">
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/20 text-emerald-400 font-mono text-xs uppercase tracking-widest mb-4">
-          <span>Five Strategic Pillars</span>
-        </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-          A place for every builder, thinker, and creator.
+        <span className="text-xs font-mono font-bold tracking-widest uppercase text-blue-900 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
+          Institutional Curriculum
+        </span>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3 mb-4">
+          Five Core Areas of Achievement
         </h2>
-        <p className="text-base text-gray-400 leading-relaxed">
-          Our curriculum and initiatives are engineered across five distinct verticals so students from every discipline achieve measurable growth.
+        <p className="text-base text-slate-600 leading-relaxed">
+          Structured so that a student from BBA, English, Mathematics, or Computer Science can find an immediate, high-value place to contribute and excel.
         </p>
       </div>
 
-      {/* Bento Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {pillars.map((pillar) => {
           const Icon = pillar.icon;
-          const isLarge = pillar.size === 'large';
-
           return (
             <div
               key={pillar.id}
-              onMouseEnter={() => setActivePillar(pillar.id)}
-              onMouseLeave={() => setActivePillar(null)}
-              className={`glass-panel rounded-3xl p-7 transition-all duration-300 relative group overflow-hidden border border-white/5 hover:border-emerald-500/40 hover:-translate-y-1 ${
-                isLarge ? 'md:col-span-2 lg:col-span-2' : 'col-span-1'
-              }`}
+              className={`institution-card rounded-2xl p-7 border-l-4 ${pillar.accent} flex flex-col justify-between`}
             >
-              {/* Subtle top corner gradient glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/5 group-hover:bg-emerald-500/10 blur-3xl rounded-full transition-all duration-500 pointer-events-none" />
-
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-gray-900 border border-white/10 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-400 group-hover:text-gray-950 transition-colors shadow-lg shadow-black/40">
-                  <Icon className="w-6 h-6" />
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <span className="font-mono text-xs font-bold text-slate-400">
+                    AREA {pillar.id}
+                  </span>
+                  <span className={`text-[11px] font-mono px-2.5 py-0.5 rounded-full border font-semibold ${pillar.badgeBg}`}>
+                    {pillar.title}
+                  </span>
                 </div>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-gray-400 px-3 py-1 rounded-full bg-white/5 border border-white/5">
-                  {pillar.badge}
-                </span>
+
+                <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 mb-4">
+                  <Icon className="w-5 h-5" />
+                </div>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-1.5">
+                  {pillar.title}
+                </h3>
+                <p className="text-xs font-mono font-medium text-blue-900 mb-3">
+                  {pillar.tagline}
+                </p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                  {pillar.description}
+                </p>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-1.5 flex items-center gap-2">
-                {pillar.title}
-              </h3>
-              <p className="text-xs sm:text-sm font-mono text-emerald-400/90 mb-4">
-                {pillar.tagline}
-              </p>
-
-              <p className="text-sm text-gray-300 leading-relaxed mb-6">
-                {pillar.summary}
-              </p>
-
-              {/* Achievements bullet list */}
-              <div className="space-y-2 pt-4 border-t border-white/5">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-gray-400 block mb-2">
-                  What You Will Master:
+              <div className="pt-4 border-t border-slate-100">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold block mb-2.5">
+                  Demonstrable Outcomes:
                 </span>
-                <div className={`grid ${isLarge ? 'sm:grid-cols-2' : 'grid-cols-1'} gap-2.5`}>
-                  {pillar.achievements.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                      <span className="text-xs text-gray-300 leading-snug">{item}</span>
-                    </div>
+                <ul className="space-y-2">
+                  {pillar.outcomes.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-xs text-slate-700 leading-snug">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </div>
           );
         })}
+
+        {/* 6th Card: Join Society Overview */}
+        <div className="institution-card rounded-2xl p-7 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-950 text-white flex flex-col justify-between">
+          <div>
+            <span className="font-mono text-xs font-bold text-amber-400 block mb-4">
+              JOIN THE CHAPTER
+            </span>
+            <h3 className="text-2xl font-bold text-white mb-2">
+              Ready to build with us?
+            </h3>
+            <p className="text-xs text-slate-300 leading-relaxed mb-6">
+              Membership is open to all actively enrolled undergraduate and graduate students at the University of Sahiwal. No prior coding or business background required.
+            </p>
+          </div>
+
+          <div className="space-y-3 pt-4 border-t border-white/10">
+            <a
+              href="#membership"
+              className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors"
+            >
+              <span>Submit Membership Application</span>
+              <ChevronRight className="w-4 h-4" />
+            </a>
+            <span className="text-[11px] font-mono text-slate-400 text-center block">
+              Spring 2027 Cohort Registrations Open
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   );

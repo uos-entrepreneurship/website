@@ -1,0 +1,39 @@
+---
+import { Building2, ExternalLink, ShieldCheck } from 'lucide-react';
+---
+
+<div class="bg-slate-900 text-slate-200 text-[11px] font-mono py-2 px-4 border-b border-slate-800">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+    <div class="flex items-center gap-2 text-center sm:text-left">
+      <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 font-semibold text-[10px] uppercase">
+        <ShieldCheck class="w-3 h-3 text-amber-400" />
+        Official Student Chapter
+      </span>
+      <span class="text-slate-300">
+        University of Sahiwal • Faculty of Computing & IT • Faculty of Economics & Management Sciences
+      </span>
+    </div>
+
+    <div class="flex items-center gap-4 text-slate-400">
+      <a
+        href="https://uosahiwal.edu.pk"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-amber-300 flex items-center gap-1 transition-colors"
+      >
+        <span>uosahiwal.edu.pk</span>
+        <ExternalLink class="w-3 h-3" />
+      </a>
+      <span class="text-slate-600">|</span>
+      <a
+        href="https://github.com/uos-entrepreneurship"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-white flex items-center gap-1 transition-colors"
+      >
+        <span>GitHub Campus Hub</span>
+        <ExternalLink class="w-3 h-3" />
+      </a>
+    </div>
+  </div>
+</div>

@@ -2,50 +2,46 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import Marquee from '../components/Marquee.astro';
-import Mission from '../components/Mission.astro';
+import AboutMandate from '../components/AboutMandate.astro';
 import Pillars from '../components/Pillars';
-import Programs from '../components/Programs.astro';
-import Stats from '../components/Stats';
-import Roadmap from '../components/Roadmap.astro';
-import Team from '../components/Team.astro';
-import CTA from '../components/CTA.astro';
-import Footer from '../components/Footer.astro';
+import FlagshipPrograms from '../components/FlagshipPrograms.astro';
+import CalendarSchedule from '../components/CalendarSchedule.astro';
+import Governance from '../components/Governance.astro';
+import OpenSyllabi from '../components/OpenSyllabi.astro';
+import InstitutionalCTA from '../components/InstitutionalCTA.astro';
+import UniversityFooter from '../components/UniversityFooter.astro';
 ---
 
 <Layout>
-  <!-- Global sticky navbar -->
+  <!-- Institutional Sticky Navbar -->
   <Navbar client:load />
 
   <main class="flex-grow">
-    <!-- Hero Section -->
+    <!-- Academic Hero Section -->
     <Hero client:load />
 
-    <!-- Infinite Marquee Ticker -->
-    <Marquee />
+    <!-- Mandate & Faculty Linkage -->
+    <AboutMandate />
 
-    <!-- Mission & Institutional Purpose -->
-    <Mission />
-
-    <!-- Five Strategic Pillars Bento Grid -->
+    <!-- Five Strategic Pillars -->
     <Pillars client:visible />
 
-    <!-- Flagship Programs -->
-    <Programs />
+    <!-- Flagship Cohorts & Hands-on Lab Bootcamps -->
+    <FlagshipPrograms />
 
-    <!-- Target Impact Stats -->
-    <Stats client:visible />
+    <!-- Academic Semester Calendar -->
+    <CalendarSchedule />
 
-    <!-- Interactive Execution Roadmap -->
-    <Roadmap />
+    <!-- Governance: Faculty Advisory & Executive Cabinet -->
+    <Governance />
 
-    <!-- Team Leadership & Governance -->
-    <Team />
+    <!-- Public Documentation & Open GitHub Blueprints -->
+    <OpenSyllabi />
 
-    <!-- Final Call to Action -->
-    <CTA />
+    <!-- Official Student Membership Admissions -->
+    <InstitutionalCTA />
   </main>
 
-  <!-- Global Footer -->
-  <Footer />
+  <!-- University Footer -->
+  <UniversityFooter />
 </Layout>

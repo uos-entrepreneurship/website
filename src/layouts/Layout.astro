@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import UniversityHeader from '../components/UniversityHeader.astro';
 
 interface Props {
   title?: string;
@@ -8,12 +9,12 @@ interface Props {
 
 const {
   title = "UOS Entrepreneurship Society | University of Sahiwal",
-  description = "Entrepreneurship • Innovation • Technology — A cross-disciplinary, student-led collective empowering University of Sahiwal students to build software, master founder skills, and create real ventures."
+  description = "The official student-led entrepreneurship and innovation chapter at the University of Sahiwal, uniting Computing, Management Sciences, and Humanities."
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +25,7 @@ const {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#030712" />
+    <meta name="theme-color" content="#0F172A" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -37,10 +38,13 @@ const {
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
   </head>
-  <body class="bg-gray-950 text-gray-100 antialiased selection:bg-emerald-500/30 selection:text-white min-h-screen flex flex-col overflow-x-hidden">
+  <body class="bg-slate-50 text-slate-900 antialiased selection:bg-blue-900 selection:text-white min-h-screen flex flex-col">
+    <!-- University Affiliation Header Bar -->
+    <UniversityHeader />
+
     <slot />
 
-    <!-- Lenis smooth scrolling initialization script -->
+    <!-- Lenis Smooth Scroll -->
     <script>
       import { initSmoothScroll } from '../scripts/lenis';
       if (document.readyState === 'loading') {

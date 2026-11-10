@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -14,83 +14,83 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: 'Mission', href: '#mission' },
-    { label: 'Pillars', href: '#pillars' },
-    { label: 'Programs', href: '#programs' },
-    { label: 'Roadmap', href: '#roadmap' },
-    { label: 'Community', href: '#team' },
+    { label: 'Mandate', href: '#about' },
+    { label: 'Five Pillars', href: '#pillars' },
+    { label: 'Cohorts & Workshops', href: '#programs' },
+    { label: 'Calendar', href: '#schedule' },
+    { label: 'Governance', href: '#governance' },
+    { label: 'Open Syllabi', href: '#resources' },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'glass-nav py-3.5 shadow-2xl shadow-black/40'
-          : 'bg-transparent py-5'
-      }`}
-    >
+    <header className="sticky top-0 z-50 transition-all duration-200 glass-header">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 via-emerald-600 to-teal-800 p-0.5 shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition-shadow">
-              <div className="w-full h-full bg-gray-950 rounded-[10px] flex items-center justify-center">
-                <span className="font-mono text-emerald-400 font-bold text-base tracking-tighter">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo & Academic Crest */}
+          <a href="#" className="flex items-center gap-3.5 group">
+            {/* University Emblem Crest */}
+            <div className="w-12 h-12 rounded-xl bg-slate-900 border-2 border-amber-500/80 p-0.5 shadow-md flex items-center justify-center transition-transform group-hover:scale-105">
+              <div className="w-full h-full bg-slate-950 rounded-[8px] flex flex-col items-center justify-center text-center">
+                <span className="font-mono text-amber-400 font-extrabold text-sm tracking-tighter leading-none">
+                  UOS
+                </span>
+                <span className="font-mono text-white text-[9px] font-semibold tracking-tight">
                   ES
                 </span>
               </div>
             </div>
+
             <div className="flex flex-col">
-              <span className="font-bold text-sm tracking-tight text-white flex items-center gap-1.5">
-                UOS Entrepreneurship
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              </span>
-              <span className="text-[11px] font-mono text-gray-400 tracking-wider uppercase">
-                Univ. of Sahiwal
+              <div className="flex items-center gap-1.5">
+                <span className="font-extrabold text-base tracking-tight text-slate-900 group-hover:text-blue-900 transition-colors">
+                  UOS Entrepreneurship Society
+                </span>
+                <span className="hidden sm:inline-block w-2 h-2 rounded-full bg-emerald-600" title="Active University Chapter" />
+              </div>
+              <span className="text-xs font-mono text-slate-500 tracking-wide uppercase">
+                University of Sahiwal • Student Chapter
               </span>
             </div>
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-1 px-4 py-1.5 rounded-full bg-gray-900/60 border border-white/5 backdrop-blur-md">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="px-4 py-1.5 text-xs font-medium text-gray-300 hover:text-white rounded-full hover:bg-white/5 transition-colors"
+                className="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Action Button */}
+          {/* Action Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <a
               href="https://github.com/uos-entrepreneurship"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-mono text-gray-400 hover:text-emerald-400 flex items-center gap-1 transition-colors px-3 py-1.5"
+              className="text-xs font-mono text-slate-600 hover:text-slate-900 flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-slate-100 transition-colors"
             >
-              GitHub Org
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <span>GitHub Hub</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
             </a>
+
             <a
-              href="#get-involved"
-              className="relative group overflow-hidden px-4 py-2 rounded-xl text-xs font-semibold text-gray-950 bg-emerald-400 hover:bg-emerald-300 transition-all shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40"
+              href="#membership"
+              className="px-5 py-2.5 rounded-lg text-xs font-bold text-white bg-slate-900 hover:bg-blue-950 border border-slate-800 shadow-sm transition-all"
             >
-              <span className="relative z-10 flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5" />
-                Join Society
-              </span>
+              Apply for Membership
             </a>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          {/* Mobile menu toggle */}
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 rounded-lg bg-gray-900 border border-white/10 text-gray-300 hover:text-white"
+              className="p-2 rounded-lg bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-200"
               aria-label="Toggle Navigation"
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -101,33 +101,33 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="md:hidden glass-nav border-t border-white/5 px-4 pt-4 pb-6 mt-3 space-y-3">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="block px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5"
+              className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-50"
             >
               {link.label}
             </a>
           ))}
-          <div className="pt-3 border-t border-white/5 flex flex-col gap-2">
+          <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
             <a
               href="https://github.com/uos-entrepreneurship"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-mono text-gray-400 hover:text-emerald-400 py-1.5 flex items-center justify-between"
+              className="text-xs font-mono text-slate-600 py-2 flex items-center justify-between"
             >
-              <span>GitHub Organization</span>
+              <span>GitHub Organization Hub</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
             <a
-              href="#get-involved"
+              href="#membership"
               onClick={() => setMobileOpen(false)}
-              className="w-full text-center py-2.5 rounded-xl text-xs font-semibold text-gray-950 bg-emerald-400 hover:bg-emerald-300"
+              className="w-full text-center py-2.5 rounded-lg text-xs font-bold text-white bg-slate-900"
             >
-              Join the Society
+              Apply for Membership
             </a>
           </div>
         </div>
